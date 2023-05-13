@@ -137,7 +137,7 @@ String& String::operator=(const char* other)
     return *this;
 }
 
-size_t ComputeMinCapacityToReallocate(size_t firstLength, size_t firstCapacity, size_t secondLength)
+size_t compute_min_capacity_to_reallocate(size_t firstLength, size_t firstCapacity, size_t secondLength)
 {
     size_t capacity = firstCapacity;
     if (firstLength + secondLength > capacity)
@@ -148,7 +148,7 @@ size_t ComputeMinCapacityToReallocate(size_t firstLength, size_t firstCapacity, 
 
 String operator+(const String& left, const String& right)
 {
-    size_t capacity = ComputeMinCapacityToReallocate(
+    size_t capacity = compute_min_capacity_to_reallocate(
         left.Length(),
         left.Capacity(),
         right.Length());
@@ -157,7 +157,7 @@ String operator+(const String& left, const String& right)
 
 String operator+(const String& left, const char* right)
 {
-    size_t capacity = ComputeMinCapacityToReallocate(
+    size_t capacity = compute_min_capacity_to_reallocate(
         left.Length(),
         left.Capacity(),
         strlen(right));
